@@ -1,10 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from django.template import loader
+from .models import *
 # Create your views here.
 
 def stud(request):
-    return render(request , "first.html")
+    abc = language.objects.all()
+    temp = loader.get_template("first.html")
+    print(abc)
+    cont = {
+        "ab" : abc
+    }
+    return HttpResponse(temp.render(cont , request))
 
 def second(request):
-    return render(request , "second.html")
+    if request.method == 'POST':
+        name = request.POST.get("lname")
+        img = request.FILES.get("image")
+
+        s = language()
+        s.name = name
+        s.photo = img
+        s.save()
+        return redirect("/")
+    return render(request , "langadd.html")

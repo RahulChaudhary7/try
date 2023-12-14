@@ -7,6 +7,10 @@
 </head>
 <body>
     <p>helloooo...............</p>
-    <a href="/second/">second page</a>
+    {% for x in ab %}
+    {{x}} 
+    <img src="{{ x.photo.url }}" alt="up" height="120px" width="120px"> </a> <br>
+    {% endfor %}
+    <a href="/second/">ADD</a>
 </body>
 </html>
