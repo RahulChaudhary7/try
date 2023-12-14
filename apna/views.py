@@ -5,3 +5,6 @@ from django.template import loader
 
 def stud(request):
     return render(request , "first.html")
+
+def second(request):
+    return render(request , "second.html")
